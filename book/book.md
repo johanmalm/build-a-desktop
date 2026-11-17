@@ -260,13 +260,7 @@ A simple palette has been chosen for this first desktop. It is derived from
 Adwaita-Dark and KvGnomeDark which will discussed shortly; it is also reflected
 in the labTeallach theme that will be used by the compositor.
 
-<img src="assets/swatch-282828.png" alt="#282828" />
-<img src="assets/swatch-2e2e2e.png" alt="#2e2e2e" />
-<img src="assets/swatch-303030.png" alt="#303030" />
-<img src="assets/swatch-353535.png" alt="#353535" />
-<img src="assets/swatch-505050.png" alt="#505050" />
-<img src="assets/swatch-909090.png" alt="#909090" />
-<img src="assets/swatch-ffffff.png" alt="#ffffff" />
+<img src="assets/swatch-282828.png" alt="#282828" /> <img src="assets/swatch-2e2e2e.png" alt="#2e2e2e" /> <img src="assets/swatch-303030.png" alt="#303030" /> <img src="assets/swatch-353535.png" alt="#353535" /> <img src="assets/swatch-505050.png" alt="#505050" /> <img src="assets/swatch-909090.png" alt="#909090" /> <img src="assets/swatch-ffffff.png" alt="#ffffff" />
 
 ### Launch programs
 
