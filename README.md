@@ -233,14 +233,19 @@ packages=(
   slurp
   grim                 # take screenshots
   wf-recorder
+  wl-clipboard
 
   rofi                 # application launcher
+  mc
 
   kvantum              # set Qt theme
   qt6ct                # set Qt theme
 
   git
   man
+  gcc
+  pkg-config
+  gnome-keyring
 
   lximage-qt           # LXQt image viewer
   featherpad           # LXQt text editor
@@ -264,7 +269,41 @@ in the labTeallach theme that will be used by the compositor.
 
 ### Launch programs
 
-Setup a simple menu to start programs
+A simple root-menu helps to launch installed programs.
+
+Create `~/.config/labwc/menu.xml`:
+
+```XML
+<openbox_menu>
+<menu id="root-menu">
+  <menu id="Applications" label="Applications" execute="labwc-menu-generator -p -n" />
+  <separator />
+  <item label="Reconfigure">
+    <action name="Reconfigure" />
+  </item>
+  <item label="Exit">
+    <action name="If">
+      <prompt message="Do you really want to exit the compositor?" />
+      <then>
+        <action name="Exit" />
+      </then>
+    </action>
+  </item>
+</menu>
+</openbox_menu>
+```
+
+### Configure the compositor
+
+From the root-menu, labwc-tweaks can now be launched.
+
+<img src="img/3-c-001.png" />
+
+<img src="img/3-c-002.png" />
+
+For many users, the first things to do is to set their keyboard layout.
+
+<img src="img/3-c-003.png" />
 
 ### Qt and Gtk themes
 
