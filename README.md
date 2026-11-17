@@ -246,12 +246,15 @@ packages=(
   gcc
   pkg-config
   gnome-keyring
+  bash-completion
 
   lximage-qt           # LXQt image viewer
   featherpad           # LXQt text editor
+  pcmanfm-qt           # LXQt file manager
 
   gnome-text-editor    # Gtk4 test client
   mousepad             # Gtk3 test client
+  thunar               # Gtk3 test client
 )
 
 sudo pacman -S "${packages[@]}"
@@ -262,8 +265,8 @@ sudo pacman -S "${packages[@]}"
 ### Palette
 
 A simple palette has been chosen for this first desktop. It is derived from
-Adwaita-Dark and KvGnomeDark which will discussed shortly; it is also reflected
-in the labTeallach theme that will be used by the compositor.
+Adwaita-Dark and KvGnomeDark which will be discussed shortly; it is also
+reflected in the labTeallach theme that will be used by the compositor.
 
 <img src="assets/swatch-282828.png" alt="#282828" /> <img src="assets/swatch-2e2e2e.png" alt="#2e2e2e" /> <img src="assets/swatch-303030.png" alt="#303030" /> <img src="assets/swatch-353535.png" alt="#353535" /> <img src="assets/swatch-505050.png" alt="#505050" /> <img src="assets/swatch-909090.png" alt="#909090" /> <img src="assets/swatch-ffffff.png" alt="#ffffff" />
 
@@ -293,11 +296,13 @@ Create `~/.config/labwc/menu.xml`:
 </openbox_menu>
 ```
 
+Following a `labwc -r`, the root-menu should now look like this:
+
+<img src="img/3-c-001.png" />
+
 ### Configure the compositor
 
 From the root-menu, labwc-tweaks can now be launched.
-
-<img src="img/3-c-001.png" />
 
 <img src="img/3-c-002.png" />
 
@@ -310,6 +315,13 @@ For many users, the first things to do is to set their keyboard layout.
 Now that a working environment exists, the difference between toolkit looks
 can be observed. The screenshot below shows how different Qt6, Gtk3 and Gkt4
 look out of the box.
+
+<img src="img/3-c-004.png" />
+
+Similarly, comparing `pcmanfm-qt` and `thunar` shows default looks with no
+toolkit or icon themes set.
+
+<img src="img/3-c-005.png" />
 
 
 
