@@ -293,11 +293,13 @@ Create `~/.config/labwc/menu.xml`:
 </openbox_menu>
 ```
 
+Following a `labwc -r`, the root-menu should now look like this:
+
+<img src="img/3-c-001.png" />
+
 ### Configure the compositor
 
 From the root-menu, labwc-tweaks can now be launched.
-
-<img src="img/3-c-001.png" />
 
 <img src="img/3-c-002.png" />
 
@@ -311,7 +313,7 @@ Now that a working environment exists, the difference between toolkit looks
 can be observed. The screenshot below shows how different Qt6, Gtk3 and Gkt4
 look out of the box.
 
-
+<img src="img/3-c-004.png" />
 
 ## 3.d - Desktop Two
 
