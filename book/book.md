@@ -246,12 +246,15 @@ packages=(
   gcc
   pkg-config
   gnome-keyring
+  bash-completion
 
   lximage-qt           # LXQt image viewer
   featherpad           # LXQt text editor
+  pcmanfm-qt           # LXQt file manager
 
   gnome-text-editor    # Gtk4 test client
   mousepad             # Gtk3 test client
+  thunar               # Gtk3 test client
 )
 
 sudo pacman -S "${packages[@]}"
@@ -314,6 +317,13 @@ can be observed. The screenshot below shows how different Qt6, Gtk3 and Gkt4
 look out of the box.
 
 <img src="img/3-c-004.png" />
+
+Similarly, comparing `pcmanfm-qt` and `thunar` shows default looks with no
+toolkit or icon themes set.
+
+<img src="img/3-c-005.png" />
+
+
 
 ## 3.d - Desktop Two
 
