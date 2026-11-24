@@ -23,6 +23,10 @@ packages=(
   kvantum              # set Qt theme
   qt6ct                # set Qt theme
 
+  ttf-dejavu
+  papirus-icon-theme   # Papirus icons
+  gnome-themes-extra   # Neede to enable Adwaita-dark
+
   git
   man
   gcc

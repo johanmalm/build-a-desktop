@@ -216,7 +216,8 @@ that meets the eye other than a blank canvas for construction.
 ## 3.b Base dependencies
 
 A few more base package are needed to create a very simple desktop. The
-instructions in "Desktop One" assume that these have been installed.
+instructions in "Desktop One" assume that the ones listed below have been
+installed.
 
 [bin/install-arch-linux-packages.sh](bin/install-arch-linux-packages.sh)
 
@@ -227,8 +228,8 @@ instructions in "Desktop One" assume that these have been installed.
 ### Palette
 
 A simple palette has been chosen for this first desktop. It is derived from
-Adwaita-Dark and KvGnomeDark which will discussed shortly; it is also reflected
-in the labTeallach theme that will be used by the compositor.
+Adwaita-Dark and KvGnomeDark which will be discussed shortly; it is also
+reflected in the labTeallach theme that will be used by the compositor.
 
 <img src="assets/swatch-282828.png" alt="#282828" /> <img src="assets/swatch-2e2e2e.png" alt="#2e2e2e" /> <img src="assets/swatch-303030.png" alt="#303030" /> <img src="assets/swatch-353535.png" alt="#353535" /> <img src="assets/swatch-505050.png" alt="#505050" /> <img src="assets/swatch-909090.png" alt="#909090" /> <img src="assets/swatch-ffffff.png" alt="#ffffff" />
 
@@ -285,14 +286,9 @@ toolkit or icon themes set.
 
 <img src="img/3-c-005.png" />
 
-
-
 ## 3.d - Desktop Two
 
-```
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-gsettings set org.gnome.desktop.interface color-scheme 'default'
-```
+@code:desktop-two/bootstrap.sh:0
 
 # PART 4 - THE ENGINEERING
 

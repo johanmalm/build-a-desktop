@@ -216,10 +216,12 @@ that meets the eye other than a blank canvas for construction.
 ## 3.b Base dependencies
 
 A few more base package are needed to create a very simple desktop. The
-instructions in "Desktop One" assume that these have been installed.
+instructions in "Desktop One" assume that the ones listed below have been
+installed.
+
+[bin/install-arch-linux-packages.sh](bin/install-arch-linux-packages.sh)
 
 ```
-packages=(
   labwc-themes
   labwc-tweaks
   labwc-menu-generator
@@ -241,6 +243,10 @@ packages=(
   kvantum              # set Qt theme
   qt6ct                # set Qt theme
 
+  ttf-dejavu
+  papirus-icon-theme   # Papirus icons
+  gnome-themes-extra   # Neede to enable Adwaita-dark
+
   git
   man
   gcc
@@ -255,9 +261,6 @@ packages=(
   gnome-text-editor    # Gtk4 test client
   mousepad             # Gtk3 test client
   thunar               # Gtk3 test client
-)
-
-sudo pacman -S "${packages[@]}"
 ```
 
 ## 3.c - Desktop One
@@ -323,13 +326,11 @@ toolkit or icon themes set.
 
 <img src="img/3-c-005.png" />
 
-
-
 ## 3.d - Desktop Two
 
 ```
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-gsettings set org.gnome.desktop.interface color-scheme 'default'
+gsettings set org.gnome.desktop.interface gtk-theme Adwaita
+gsettings set org.gnome.desktop.interface color-scheme default
 ```
 
 # PART 4 - THE ENGINEERING
