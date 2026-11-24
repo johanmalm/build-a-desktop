@@ -304,6 +304,15 @@ Setting the Gtk theme and font is simpler. Merely issue these commands:
 
 @code:desktop-one/bootstrap.sh:0
 
+Running `mousepad` it is now noticeable that the Server Side Decoration (SSD),
+for example the titlebar, is still using a different them. Correct this by
+setting theme `labTeallach` in `labwc-tweaks`. Also, select icon theme
+`Papirus-Dark` to show the correct menu theme in any compositor generated
+graphics like the titlebar and window-switcher.
+
+<img src="img/3-c-013.png" />
+<img src="img/3-c-014.png" />
+
 ## 3.d - Desktop Two
 
 @code:desktop-two/bootstrap.sh:0
