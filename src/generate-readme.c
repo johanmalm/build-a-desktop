@@ -22,9 +22,14 @@ void process_code_line(const char *line, const char *id)
 {
 	static int indentation = UNSPECIFIED;
 	static bool is_inside = false;
-	char pattern[32] = {0};
-	snprintf(pattern, sizeof(pattern), "//! [%s]", id);
-	if (!strcmp(line, pattern)) {
+
+	char pattern_sh[32] = {0};
+	char pattern_xml[32] = {0};
+
+	snprintf(pattern_sh, sizeof(pattern_sh), "##! [%s]", id);
+	snprintf(pattern_xml, sizeof(pattern_xml), "<!-- [%s]", id);
+
+	if (!strcmp(line, pattern_sh) || !strcmp(line, pattern_xml)) {
 		is_inside = !is_inside;
 		indentation = UNSPECIFIED;
 		printf("```\n");

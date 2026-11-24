@@ -218,47 +218,9 @@ that meets the eye other than a blank canvas for construction.
 A few more base package are needed to create a very simple desktop. The
 instructions in "Desktop One" assume that these have been installed.
 
-```
-packages=(
-  labwc-themes
-  labwc-tweaks
-  labwc-menu-generator
+[bin/install-arch-linux-packages.sh](bin/install-arch-linux-packages.sh)
 
-  swaybg
-  swaylock
-  swayidle
-  foot
-  wtype
-  wlr-randr            # manage outputs (monitors)
-  slurp
-  grim                 # take screenshots
-  wf-recorder
-  wl-clipboard
-
-  rofi                 # application launcher
-  mc
-
-  kvantum              # set Qt theme
-  qt6ct                # set Qt theme
-
-  git
-  man
-  gcc
-  pkg-config
-  gnome-keyring
-  bash-completion
-
-  lximage-qt           # LXQt image viewer
-  featherpad           # LXQt text editor
-  pcmanfm-qt           # LXQt file manager
-
-  gnome-text-editor    # Gtk4 test client
-  mousepad             # Gtk3 test client
-  thunar               # Gtk3 test client
-)
-
-sudo pacman -S "${packages[@]}"
-```
+@code:bin/install-arch-linux-packages.sh:0
 
 ## 3.c - Desktop One
 
