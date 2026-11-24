@@ -273,7 +273,7 @@ For many users, the first things to do is to set their keyboard layout.
 
 <img src="img/3-c-003.png" />
 
-### Qt and Gtk themes
+### Themes and fonts
 
 Now that a working environment exists, the difference between toolkit looks
 can be observed. The screenshot below shows how different Qt6, Gtk3 and Gkt4
@@ -285,6 +285,24 @@ Similarly, comparing `pcmanfm-qt` and `thunar` shows default looks with no
 toolkit or icon themes set.
 
 <img src="img/3-c-005.png" />
+
+Set the Qt theme by taking the following steps:
+
+1. Set `QT_QPA_PLATFORMTHEME=qt6ct` in `~/.config/labwc/environment`.
+2. Run `labwc -r` to make the environment variable available to applications.
+3. Open `qt6ct` (called "Qt6 Settings" in the root-menu), and choose style
+   `kvantum` under the "Appearance" tab.
+4. Whilst in `qt6ct`, select `Papirus-Dark` under the "Icon Theme" tab.
+5. Also set `DejaVu Sans 10` under the "Font" tab.
+6. Open `kvantummanager` is choose theme `KvGnomeDark`.
+
+<img src="img/3-c-010.png" />
+<img src="img/3-c-011.png" />
+<img src="img/3-c-012.png" />
+
+Setting the Gtk theme and font is simpler. Merely issue these commands:
+
+@code:desktop-one/bootstrap.sh:0
 
 ## 3.d - Desktop Two
 
