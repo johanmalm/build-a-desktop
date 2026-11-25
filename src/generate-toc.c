@@ -34,7 +34,7 @@ void process_line(char *line)
 	for (char *p = line + level + 1; *p; ++p) {
 		if (*p == ' ') {
 			putchar('-');
-		} else if (isalpha(*p)) {
+		} else if (isalnum((unsigned char)*p)) {
 			putchar(*p);
 		}
 	}
