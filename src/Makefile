@@ -12,6 +12,7 @@ CFLAGS += `pkg-config --cflags glib-2.0`
 LDFLAGS += `pkg-config --libs glib-2.0`
 
 PROGS = \
+	generate-toc \
 	generate-readme
 
 SRC  = $(wildcard *.c)

@@ -1,3 +1,4 @@
 *.o
 
+generate-toc
 generate-readme
