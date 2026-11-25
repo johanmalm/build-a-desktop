@@ -32,7 +32,7 @@ void process_line(char *line)
 	printf("- [%s]", line + level + 1);
 	printf("(#");
 	for (char *p = line + level + 1; *p; ++p) {
-		if (*p == ' ') {
+		if (*p == ' ' || *p == '-') {
 			putchar('-');
 		} else if (isalnum((unsigned char)*p)) {
 			putchar(*p);
