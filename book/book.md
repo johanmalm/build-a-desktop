@@ -233,9 +233,9 @@ reflected in the labTeallach theme that will be used by the compositor.
 
 <img src="assets/swatch-282828.png" alt="#282828" /> <img src="assets/swatch-2e2e2e.png" alt="#2e2e2e" /> <img src="assets/swatch-303030.png" alt="#303030" /> <img src="assets/swatch-353535.png" alt="#353535" /> <img src="assets/swatch-505050.png" alt="#505050" /> <img src="assets/swatch-909090.png" alt="#909090" /> <img src="assets/swatch-ffffff.png" alt="#ffffff" />
 
-### Launch programs
+### First steps
 
-A simple root-menu helps to launch installed programs.
+To start with, setup a simple root-menu to help launch installed programs.
 
 Create `~/.config/labwc/menu.xml`:
 
@@ -259,17 +259,11 @@ Create `~/.config/labwc/menu.xml`:
 </openbox_menu>
 ```
 
-Following a `labwc -r`, the root-menu should now look like this:
+Then run the command `labwc -r` to load the menu, which should look like this:
 
 <img src="img/3-c-001.png" />
 
-### Configure the compositor
-
-From the root-menu, labwc-tweaks can now be launched.
-
-<img src="img/3-c-002.png" />
-
-For many users, the first things to do is to set their keyboard layout.
+From the root-menu, launch `labwc-tweaks` and set the keyboard layout.
 
 <img src="img/3-c-003.png" />
 
