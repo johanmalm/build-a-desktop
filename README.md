@@ -339,15 +339,19 @@ From the root-menu, launch `labwc-tweaks` and set the keyboard layout.
 
 ### Themes and fonts
 
-Now that a working environment exists, the difference between toolkit looks
-can be observed. The screenshot below shows how different Qt6, Gtk3 and Gkt4
-look out of the box.
+> WARNING: On systems containing already configured Desktop Environments, the
+> steps below may cause wider changes.
+
+On a system, such as this, with no configured toolkit or icon theme, clients
+using Gtk and Qt look raw and different. The screenshots below show:
+
+- `featherpad` (Qt6)
+- `mousepad` (Gtk3)
+- `gnome-text-editor` (Gkt4)
+- `pcmanfm-qt` (Qt6)
+- `thunar` (Gtk3)
 
 <img src="img/3-c-004.png" />
-
-Similarly, comparing `pcmanfm-qt` and `thunar` shows default looks with no
-toolkit or icon themes set.
-
 <img src="img/3-c-005.png" />
 
 Set the Qt theme by taking the following steps:
@@ -376,13 +380,11 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'DejaVu Sans Mono 
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'DejaVu Sans 10'
 ```
 
-Running `mousepad` it is now noticeable that the Server Side Decoration (SSD),
-for example the titlebar, is still using a different them. Correct this by
-setting theme `labTeallach` in `labwc-tweaks`. Also, select icon theme
-`Papirus-Dark` to show the correct menu theme in any compositor generated
-graphics like the titlebar and window-switcher.
+Finally, to configure the compositor accordingly, use `labwc-tweaks` to set:
 
-<img src="img/3-c-013.png" />
+- Theme `labTeallach`
+- Icon theme `Papirus-Dark`
+
 <img src="img/3-c-014.png" />
 
 ## 3.d - Desktop Two
