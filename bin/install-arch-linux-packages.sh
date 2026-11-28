@@ -2,30 +2,31 @@
 
 packages=(
 ##! [0]
-  labwc-themes
-  labwc-tweaks
-  labwc-menu-generator
+  labwc-themes          # themes for graphics like titlebar and window-swticher
+  labwc-tweaks          # compositor configuration GUI tool
+  labwc-menu-generator  # helper for labwc root-menu
 
-  swaybg
-  swaylock
-  swayidle
-  foot
-  wtype
-  wlr-randr            # manage outputs (monitors)
-  slurp
-  grim                 # take screenshots
-  wf-recorder
-  wl-clipboard
+  swaybg                # wallpaper setter
+  swaylock              # screen locker
+  swayidle              # idle manager for screensaver and power management
+  foot                  # terminal
+  wtype                 # keyboard input simulator (like xdotool)
+  wlr-randr             # manage outputs (monitors)
+  grim                  # screen shooter
+  slurp                 # tool to select screen region
+  wf-recorder           # screen recorder
+  wl-clipboard          # clipboard tools like wl-copy
 
-  rofi                 # application launcher
-  mc
+  wmenu                 # simple application launcher
+  rofi                  # advanced application launcher
+  xfce4-panel           # Xfce panel
 
-  kvantum              # set Qt theme
-  qt6ct                # set Qt theme
+  kvantum               # set Qt theme
+  qt6ct                 # set Qt theme
 
-  ttf-dejavu
-  papirus-icon-theme   # Papirus icons
-  gnome-themes-extra   # Neede to enable Adwaita-dark
+  ttf-dejavu            # font
+  papirus-icon-theme    # icon theme
+  gnome-themes-extra    # needed to enable Adwaita-dark
 
   git
   man
@@ -33,14 +34,16 @@ packages=(
   pkg-config
   gnome-keyring
   bash-completion
+  mc
+  pandoc
 
-  lximage-qt           # LXQt image viewer
-  featherpad           # LXQt text editor
-  pcmanfm-qt           # LXQt file manager
+  lximage-qt            # LXQt image viewer
+  featherpad            # LXQt text editor
+  pcmanfm-qt            # LXQt file manager
 
-  gnome-text-editor    # Gtk4 test client
-  mousepad             # Gtk3 test client
-  thunar               # Gtk3 test client
+  gnome-text-editor     # Gtk4 test client
+  mousepad              # Gtk3 test client
+  thunar                # Gtk3 test client
 ##! [0]
 )
 

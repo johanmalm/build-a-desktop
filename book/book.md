@@ -370,15 +370,20 @@ smiply use `labwc-tweaks` to set:
 
 <img src="img/3-c-014.png" />
 
+### Wallpaper
+
 ### Panel
 
 At this point, a basic desktop has been established. Applications can be
 launched from the root menu, and GTK and Qt applications share a broadly
 consistent appearance. However, it is still quite primitive in that there is no
 persistent indication of which applications are running and no obvious
-indication of the current workspace.
+indication of the current workspace. The installation of a panel is a simple
+solution to this short-coming. For this desktop, `xfce4-panel` will be used as
+it is widely packaged and easy to setup.
 
-### Wallpaper
+### Conclusion
+
 
 ## 3.d - Desktop Two
 
