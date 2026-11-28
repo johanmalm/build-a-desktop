@@ -372,6 +372,30 @@ smiply use `labwc-tweaks` to set:
 
 ### Wallpaper
 
+Setting the background wallpaper calls for a GUI application to select images,
+but that requires executables to be written so in this first simple desktop a
+simple `swaybg` command will be used to set a color only. This will be achieved
+in two steps, namely: (1) issue the command in the launcher `wmenu`; and (2)
+make the background color persisntent by adding the command to the `autostart`
+file.
+
+The swaybg command could of course be issued in a terminal, but it is not an
+ideal approach because it then blocks any further commands, and swaybg would be
+killed if the terminal is closed. There are ways of dealining with those
+issues, but a neater approach is to use the launcher `wmenu`. To accomplish
+this, take the following steps:
+
+1. Bind the super key in `rc.xml` as shown below.
+2. Reconfigure the compositor (either by selecting Reconfigure in the root menu
+   or by issuing the command `labwc -r` in a terminal.
+3. Press the left super key to open wmenu (at the top of the screen)
+4. Type in the command `swaybg -c '#222222'` (or whatever color you prefer) and
+   press enter.
+
+@code:desktop-one/rc.xml:0
+
+<img src="img/3-c-020.png" />
+
 ### Panel
 
 At this point, a basic desktop has been established. Applications can be
@@ -381,6 +405,12 @@ persistent indication of which applications are running and no obvious
 indication of the current workspace. The installation of a panel is a simple
 solution to this short-coming. For this desktop, `xfce4-panel` will be used as
 it is widely packaged and easy to setup.
+
+<img src="img/3-c-030.png" />
+<img src="img/3-c-031.png" />
+<img src="img/3-c-032.png" />
+<img src="img/3-c-040.png" />
+<img src="img/3-c-041.png" />
 
 ### Conclusion
 

@@ -28,8 +28,9 @@
       - [Qt Theme](#Qt-Theme)
       - [Gtk Theme](#Gtk-Theme)
       - [Compositor Theme](#Compositor-Theme)
-    - [Panel](#Panel)
     - [Wallpaper](#Wallpaper)
+    - [Panel](#Panel)
+    - [Conclusion](#Conclusion)
   - [3.d - Desktop Two](#3d---Desktop-Two)
     - [Palette](#Palette)
 - [PART 4 - THE ENGINEERING](#PART-4---THE-ENGINEERING)
@@ -258,30 +259,31 @@ installed.
 [bin/install-arch-linux-packages.sh](bin/install-arch-linux-packages.sh)
 
 ```
-  labwc-themes
-  labwc-tweaks
-  labwc-menu-generator
+  labwc-themes          # themes for graphics like titlebar and window-swticher
+  labwc-tweaks          # compositor configuration GUI tool
+  labwc-menu-generator  # helper for labwc root-menu
 
-  swaybg
-  swaylock
-  swayidle
-  foot
-  wtype
-  wlr-randr            # manage outputs (monitors)
-  slurp
-  grim                 # take screenshots
-  wf-recorder
-  wl-clipboard
+  swaybg                # wallpaper setter
+  swaylock              # screen locker
+  swayidle              # idle manager for screensaver and power management
+  foot                  # terminal
+  wtype                 # keyboard input simulator (like xdotool)
+  wlr-randr             # manage outputs (monitors)
+  grim                  # screen shooter
+  slurp                 # tool to select screen region
+  wf-recorder           # screen recorder
+  wl-clipboard          # clipboard tools like wl-copy
 
-  rofi                 # application launcher
-  mc
+  wmenu                 # simple application launcher
+  rofi                  # advanced application launcher
+  xfce4-panel           # Xfce panel
 
-  kvantum              # set Qt theme
-  qt6ct                # set Qt theme
+  kvantum               # set Qt theme
+  qt6ct                 # set Qt theme
 
-  ttf-dejavu
-  papirus-icon-theme   # Papirus icons
-  gnome-themes-extra   # Neede to enable Adwaita-dark
+  ttf-dejavu            # font
+  papirus-icon-theme    # icon theme
+  gnome-themes-extra    # needed to enable Adwaita-dark
 
   git
   man
@@ -289,14 +291,16 @@ installed.
   pkg-config
   gnome-keyring
   bash-completion
+  mc
+  pandoc
 
-  lximage-qt           # LXQt image viewer
-  featherpad           # LXQt text editor
-  pcmanfm-qt           # LXQt file manager
+  lximage-qt            # LXQt image viewer
+  featherpad            # LXQt text editor
+  pcmanfm-qt            # LXQt file manager
 
-  gnome-text-editor    # Gtk4 test client
-  mousepad             # Gtk3 test client
-  thunar               # Gtk3 test client
+  gnome-text-editor     # Gtk4 test client
+  mousepad              # Gtk3 test client
+  thunar                # Gtk3 test client
 ```
 
 ## 3.c - Desktop One
@@ -456,15 +460,57 @@ smiply use `labwc-tweaks` to set:
 
 <img src="img/3-c-014.png" />
 
+### Wallpaper
+
+Setting the background wallpaper calls for a GUI application to select images,
+but that requires executables to be written so in this first simple desktop a
+simple `swaybg` command will be used to set a color only. This will be achieved
+in two steps, namely: (1) issue the command in the launcher `wmenu`; and (2)
+make the background color persisntent by adding the command to the `autostart`
+file.
+
+The swaybg command could of course be issued in a terminal, but it is not an
+ideal approach because it then blocks any further commands, and swaybg would be
+killed if the terminal is closed. There are ways of dealining with those
+issues, but a neater approach is to use the launcher `wmenu`. To accomplish
+this, take the following steps:
+
+1. Bind the super key in `rc.xml` as shown below.
+2. Reconfigure the compositor (either by selecting Reconfigure in the root menu
+   or by issuing the command `labwc -r` in a terminal.
+3. Press the left super key to open wmenu (at the top of the screen)
+4. Type in the command `swaybg -c '#222222'` (or whatever color you prefer) and
+   press enter.
+
+```
+  <keyboard>
+    <default />
+    <keybind key="Super_L" onRelease="yes">
+      <action name="Execute" command="wmenu-run" />
+    </keybind>
+  </keyboard>
+```
+
+<img src="img/3-c-020.png" />
+
 ### Panel
 
 At this point, a basic desktop has been established. Applications can be
 launched from the root menu, and GTK and Qt applications share a broadly
 consistent appearance. However, it is still quite primitive in that there is no
 persistent indication of which applications are running and no obvious
-indication of the current workspace.
+indication of the current workspace. The installation of a panel is a simple
+solution to this short-coming. For this desktop, `xfce4-panel` will be used as
+it is widely packaged and easy to setup.
 
-### Wallpaper
+<img src="img/3-c-030.png" />
+<img src="img/3-c-031.png" />
+<img src="img/3-c-032.png" />
+<img src="img/3-c-040.png" />
+<img src="img/3-c-041.png" />
+
+### Conclusion
+
 
 ## 3.d - Desktop Two
 
