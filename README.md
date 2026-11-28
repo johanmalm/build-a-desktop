@@ -20,12 +20,18 @@
     - [Notifications](#Notifications)
 - [PART 3 - THE DESKTOP TAKES SHAPE](#PART-3---THE-DESKTOP-TAKES-SHAPE)
   - [3.a - Substrate](#3a---Substrate)
-  - [3.b Base dependencies](#3b-Base-dependencies)
+  - [3.b - Base dependencies](#3b---Base-dependencies)
   - [3.c - Desktop One](#3c---Desktop-One)
     - [Palette](#Palette)
-    - [First steps](#First-steps)
+    - [Initial steps](#Initial-steps)
     - [Themes and fonts](#Themes-and-fonts)
+      - [Qt Theme](#Qt-Theme)
+      - [Gtk Theme](#Gtk-Theme)
+      - [Compositor Theme](#Compositor-Theme)
+    - [Panel](#Panel)
+    - [Wallpaper](#Wallpaper)
   - [3.d - Desktop Two](#3d---Desktop-Two)
+    - [Palette](#Palette)
 - [PART 4 - THE ENGINEERING](#PART-4---THE-ENGINEERING)
 
 # FOREWORD
@@ -243,7 +249,7 @@ that meets the eye other than a blank canvas for construction.
 
 <img src="img/3-a-003.png" />
 
-## 3.b Base dependencies
+## 3.b - Base dependencies
 
 A few more base package are needed to create a very simple desktop. The
 instructions in "Desktop One" assume that the ones listed below have been
@@ -295,17 +301,44 @@ installed.
 
 ## 3.c - Desktop One
 
+To start with a simple but usable desktop will be created. It will note have
+all the conveniences that may eventually be wanted, nor will it be particularly
+sophisticated. The intention is to establish a foundation: something that can
+launch applications, provide a consistent appearance and be used for ordinary
+work.
+
+This initial desktop will be built with static configuration files without any
+supporting scripts. Also, settings will be hard-coded with no attempt to set
+desktop-wide variables in one place. This is a conscious approach to keep the
+setup as simple as possible to help the reader understand the construct.
+
 ### Palette
 
-A simple palette has been chosen for this first desktop. It is derived from
-Adwaita-Dark and KvGnomeDark which will be discussed shortly; it is also
-reflected in the labTeallach theme that will be used by the compositor.
+The palette is deliberately restrained, using a small number of closely related
+dark greys, with white and mid-grey for contrast. It draws inspiration from
+Adwaita-Dark and KvGnomeDark, which will be examined later. The same palette is
+reflected in the labTeallach compositor theme.
 
 <img src="assets/swatch-282828.png" alt="#282828" /> <img src="assets/swatch-2e2e2e.png" alt="#2e2e2e" /> <img src="assets/swatch-303030.png" alt="#303030" /> <img src="assets/swatch-353535.png" alt="#353535" /> <img src="assets/swatch-505050.png" alt="#505050" /> <img src="assets/swatch-909090.png" alt="#909090" /> <img src="assets/swatch-ffffff.png" alt="#ffffff" />
 
-### First steps
+| color     | purpose                |
+| --------- | ---------------------- |
+| `#282828` | Main background        |
+| `#2e2e2e` | Secondary background   |
+| `#303030` | Surface                |
+| `#353535` | Raised surface         |
+| `#505050` | Borders and separators |
+| `#909090` | Secondary text         |
+| `#ffffff` | Primary text           |
 
-To start with, setup a simple root-menu to help launch installed programs.
+### Initial steps
+
+Before doing anything else, a way to launch applications is needed. A root menu
+is a convenient starting point: it provides access to installed applications
+without requiring a panel, dock or other desktop component.
+
+To avoid manually populating the root menu, the command `labwc-menu-generator`
+is used to search the system for installed programs.
 
 Create `~/.config/labwc/menu.xml`:
 
@@ -329,18 +362,28 @@ Create `~/.config/labwc/menu.xml`:
 </openbox_menu>
 ```
 
-Then run the command `labwc -r` to load the menu, which should look like this:
+Then run the command `labwc -r` to load the menu, and launch `labwc-tweaks` and
+set the keyboard layout. The command `labwc -r` reloads the configuration
+without re-starting the compositor.
+
+The menu is accessed using the configured root-menu binding which is
+right-clicking the desktop by default.
 
 <img src="img/3-c-001.png" />
-
-From the root-menu, launch `labwc-tweaks` and set the keyboard layout.
-
 <img src="img/3-c-003.png" />
 
 ### Themes and fonts
 
 > WARNING: On systems containing already configured Desktop Environments, the
 > steps below may cause wider changes.
+
+Linux applications are built using different graphical toolkits. GTK and Qt are
+two of the most prominent, and each has its own approach to configuring themes,
+fonts and icons. This presents a particular challenge when building a desktop
+environment from independent components. Without some coordination,
+applications can look quite different from one another, even when they are
+running on the same desktop. This will be addressed this by choosing a common
+visual direction and configuring both toolkits accordingly.
 
 On a system, such as this, with no configured toolkit or icon theme, clients
 using Gtk and Qt look raw and different. The screenshots below show:
@@ -354,45 +397,101 @@ using Gtk and Qt look raw and different. The screenshots below show:
 <img src="img/3-c-004.png" />
 <img src="img/3-c-005.png" />
 
+#### Qt Theme
+
+Qt applications use a platform theme integration to determine how they obtain
+desktop-wide settings. For this purpose, `qt6ct` will be used in combination
+with `kvantum` as the widget style.
+
 Set the Qt theme by taking the following steps:
 
 1. Set `QT_QPA_PLATFORMTHEME=qt6ct` in `~/.config/labwc/environment`.
+   `QT_QPA_PLATFORMTHEME` is an environment variable and the labwc environment
+   file is a way of making it available to applications launched in the
+   compositor.
 2. Run `labwc -r` to make the environment variable available to applications.
 3. Open `qt6ct` (called "Qt6 Settings" in the root-menu), and choose style
    `kvantum` under the "Appearance" tab.
 4. Whilst in `qt6ct`, select `Papirus-Dark` under the "Icon Theme" tab.
 5. Also set `DejaVu Sans 10` under the "Font" tab.
-6. Open `kvantummanager` is choose theme `KvGnomeDark`.
+6. Open `kvantummanager` and select the `KvGnomeDark` theme.
 
 <img src="img/3-c-010.png" />
 <img src="img/3-c-011.png" />
 <img src="img/3-c-012.png" />
 
-Setting the Gtk theme and font is simpler. Merely issue these commands:
+#### Gtk Theme
+
+Setting the Gtk theme and font is simpler. The appearance of GTK applications
+can be set using the command `gsettings` without needing a separate GUI
+settings application.
+
+Issue these commands:
+
+[desktop-one/bootstrap.sh](desktop-one/bootstrap.sh)
 
 ```
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+
 gsettings set org.gnome.desktop.interface font-name 'DejaVu Sans 10'
 gsettings set org.gnome.desktop.interface document-font-name 'DejaVu Serif 10'
 gsettings set org.gnome.desktop.interface monospace-font-name 'DejaVu Sans Mono 10'
+
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'DejaVu Sans 10'
 ```
 
-Finally, to configure the compositor accordingly, use `labwc-tweaks` to set:
+#### Compositor Theme
+
+Finally, the compositor (labwc) is configured to use the same visual direction.
+This brings the window decorations into line with the applications and gives
+the desktop a more coherent appearance.
+
+This can be achieved by manually editing the file `~/.config/labwc/rc.xml` or
+smiply use `labwc-tweaks` to set:
 
 - Theme `labTeallach`
 - Icon theme `Papirus-Dark`
 
 <img src="img/3-c-014.png" />
 
+### Panel
+
+At this point, a basic desktop has been established. Applications can be
+launched from the root menu, and GTK and Qt applications share a broadly
+consistent appearance. However, it is still quite primitive in that there is no
+persistent indication of which applications are running and no obvious
+indication of the current workspace.
+
+### Wallpaper
+
 ## 3.d - Desktop Two
 
-```
-gsettings set org.gnome.desktop.interface gtk-theme Adwaita
-gsettings set org.gnome.desktop.interface color-scheme default
-```
+### Palette
+
+Palette based on https://github.com/NLKNguyen/papercolor-theme
+
+/usr/share/foot/themes/paper-color-light
+
+<img src="assets/swatch-eeeeee.png" />
+<img src="assets/swatch-444444.png" />
+<img src="assets/swatch-eeeeee.png" />
+<img src="assets/swatch-af0000.png" />
+<img src="assets/swatch-008700.png" />
+<img src="assets/swatch-5f8700.png" />
+<img src="assets/swatch-0087af.png" />
+<img src="assets/swatch-878787.png" />
+<img src="assets/swatch-005f87.png" />
+<img src="assets/swatch-764e37.png" />
+<img src="assets/swatch-bcbcbc.png" />
+<img src="assets/swatch-d70000.png" />
+<img src="assets/swatch-d70087.png" />
+<img src="assets/swatch-8700af.png" />
+<img src="assets/swatch-d75f00.png" />
+<img src="assets/swatch-d75f00.png" />
+<img src="assets/swatch-4c7a5d.png" />
+<img src="assets/swatch-005faf.png" />
 
 # PART 4 - THE ENGINEERING
 
